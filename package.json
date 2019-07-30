@@ -62,7 +62,7 @@
         "build-test": "tsc -p test",
         "copy": "XCOPY dist\\ccbar.js e:\\laboratory\\node-server\\http\\webroot\\ccbar_demo\\js\\ccbar.js /y && XCOPY dist\\ccbar.js e:\\laboratory\\node-server\\http\\webroot\\ccbar_api\\js\\ccbar.js /y",
         "copy-dist-files": "XCOPY dist\\ccbar.min.js dist\\ccbar-$npm_package_version.js && XCOPY dist\\ccbar.min.js dist\\ccbar-$npm_package_version.min.js",
-        "build": "npm run generate-grammar && npm run build-lib && npm run build-bundles",
+        "build": "npm run generate-grammar && npm run build-lib && npm run build-bundles && npm run copy",
         "browserTest": "npm run build-test && sleep 2 && open http://0.0.0.0:9876/debug.html & karma start --reporters kjhtml --no-single-run",
         "commandLineTest": "npm run build-test && karma start --reporters mocha --browsers ChromeHeadless --single-run",
         "buildAndTest": "npm run build && npm run commandLineTest",
