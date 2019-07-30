@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>ccbar-demo</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="../dist/ccbar.js"></script>
+    <link type="text/css" rel="stylesheet" href="../ccbar_demo/css/index.css">
+</head>
+
+<body>
+
+    <div id="ccbarBox" class="ccbar">
+        <div class="ccbar-title">
+            <span id="ccbarTitle">step1：sip注册</span>
+            <span style="float: right;">
+                <select id="status" onchange="changeStatus()">
+                    <option value="1">空闲</option>
+                    <option value="2">小休</option>
+                    <option value="3">忙碌</option>
+                </select>
+                <button onclick="signOut()">注销</button>
+            </span>
+        </div>
+        <div class="ccbar-content">
+            <div class="step step1" id="step1">
+                <table>
+                    <tr>
+                        <td class="step_left">sip注册地址:</td>
+                        <td><input id="uri" type="text" value="" name="uri" /></td>
+                    </tr>
+
+                    <tr>
+                        <td class="step_left">sip账号:</td>
+                        <td><input id="account" type="text" value="" name="account" /></td>
+                    </tr>
+                    <tr>
+                        <td class="step_left">sip密码:</td>
+                        <td><input id="password" type="password" value="" name="password" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <button onclick="initWebRTC()">注册</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="step step2" id="step2">
+                <table>
+                    <tr>
+                        <td class="step_left">企业简称:</td>
+                        <td><input id="a_enterprise" type="text" value="am5358" name="a_enterprise" /></td>
+                    </tr>
+
+                    <tr>
+                        <td class="step_left">坐席账号:</td>
+                        <td><input id="a_account" type="text" value="8888" name="a_account" /></td>
+                    </tr>
+                    <tr>
+                        <td class="step_left">坐席密码:</td>
+                        <td><input id="a_password" type="password" value="123456" name="a_password" /></td>
+                    </tr>
+                    <tr>
+                        <td class="step_left">技能组id:</td>
+                        <td><input id="a_skillGroupId" type="text" value="2" name="skillGroupId" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <button onclick="signIn()">签入</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="main" id="main">
+                <div class="main-up">
+                    <div>
+                        <span>显号 </span>
+                        <select id="displayNum" name="displayNum"></select>
+                    </div>
+                    <div>
+                        <span>电话 </span>
+                        <input id="phone" type="text" value="13400000000" name="phone" />
+                    </div>
+                </div>
+                <div id="message" class="message"></div>
+                <div class="buttons">
+                    <button onclick="normalCall()">呼叫</button>&nbsp;|&nbsp;
+                    <button onclick="accept()">接听</button>&nbsp;|&nbsp;
+                    <button onclick="endCall()">挂断</button>
+                    <div style="height: 4px;"></div>
+                    <button onclick="mute()">静音</button>&nbsp;|&nbsp;
+                    <button onclick="holdOn()">保持</button>&nbsp;|&nbsp;
+                    <button onclick="resumeCall()">恢复</button>&nbsp;|&nbsp;
+                    <button onclick="satisfiy()">满意度下发</button>
+                </div>
+                <audio id="ringing" autoplay loop>
+                    您的浏览器不支持 audio 标签。
+                </audio>
+            </div>
+            <div class="logout" id="logout">
+                <div class="logoutTitle">退出成功</div>
+                <button onclick="init()">重新登录</button>
+            </div>
+            <div class="unsign" id="unsign">
+                <div class="logoutTitle">sip未注册</div>
+                <button onclick="init()">重新登录</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../ccbar_demo/js/ua.js"></script>
+</body>
+
+</html>

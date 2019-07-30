@@ -1,0 +1,77 @@
+.ccbar {
+    width: 340px;
+    height: 180px;
+    position: absolute;
+    background-color: #ccc;
+}
+
+.ccbar-title {
+    color: #fff;
+    background-color: #404040;
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 4px 6px;
+    cursor: move;
+}
+
+.ccbar-content {
+    padding: 4px;
+}
+
+.step2,
+.main,
+.logout,
+.unsign {
+    display: none;
+}
+
+.main {
+    padding: 0 10px 10px 10px;
+}
+
+.step table {
+    width: 100%;
+}
+
+.step_left {
+    text-align: right;
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+input[type="text"],
+input[type="password"],
+select[name="displayNum"] {
+    width: 200px;
+    border-radius: 3px;
+    border: 1px solid #f2f2f2;
+}
+
+.logout,
+.unsign {
+    text-align: center;
+}
+
+.logoutTitle {
+    margin: 20px auto;
+}
+
+.message {
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    color: red;
+    text-align: center;
+}
+
+.main-up {
+    font-size: 12px;
+}
+
+.main-up div {
+    margin: 5px 0;
+}
+
+.buttons{
+    color: #666;
+}
