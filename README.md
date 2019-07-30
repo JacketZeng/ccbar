@@ -24,8 +24,8 @@
 |    holdOn     |                  sessionId                  |    保持通话     |
 |  resumeCall   |                  sessionId                  |    恢复通话     |
 |   satisfiy    |                  sessionId                  |   下发满意度    |
-|    signOut    |                     无                      |   签出技能组    |
-|    getSip     |                     无                      | 查询sip相关信息 |
+|    signOut    |                     无                      |      签出       |
+|    getSip     |                     无                      | 查询sip相关参数 |
 
 ##  getWebSocketSubject回调
 软电话机状态消息推送回调。
@@ -36,11 +36,12 @@
 |  msg  |                                           WsMessage                                           | WsMessage消息 |
 
 ### WsMessage
-|    字段    |   值   |               说明               |
+|    字段    |  类型  |               说明               |
 | :--------: | :----: | :------------------------------: |
 |   seatId   | number |              坐席id              |
 |   status   | string |           坐席状态名称           |
 | statusCode | number | 坐席状态值（详情参考statusCode） |
+| sessionId  | string |           通话唯一标识           |
 |    ttl     | number |      后处理倒计时（单位秒）      |
 | timestamp  | number |              时间戳              |
 
