@@ -1,7 +1,7 @@
-# ccbar.js
+#   ccbar.js
 ![ccbar](demo/images/ccbar.png "ccbar")
 
-## 初始化ccbar
+##  初始化ccbar
 ```
     // 初始化ccbar
     var _ccbar = new CCBAR.CORE.CCBAR({
@@ -12,7 +12,7 @@
     });
 ```
 
-## 方法
+##  方法
 方法名|参数|说明
 :---:|:--:|:--:|:--:
 signIn|无|签入
