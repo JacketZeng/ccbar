@@ -27497,7 +27497,7 @@ var CCBAR = /** @class */ (function () {
             return "/topic/pss." + ticket;
         };
         this.accountParams = options;
-        this.accountParams.api = "//172.16.16.250:8020/tscloud/ccbar/";
+        this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
         this.accountParams.wsUrl = "172.16.0.219";
         var body = document.body;
         var videoTag = document.createElement("video");
