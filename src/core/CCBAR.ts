@@ -31,6 +31,7 @@ const SIP_MESSAGE_TRANSPORTCREATED = { code: 6006, msg: "transportCreated" };
 const SIP_MESSAGE_INVITE = { code: 6007, msg: "您有新的来电！" };
 const SIP_MESSAGE_NOINVITE = { code: 6008, msg: "未检测到来电！" };
 const SIP_MESSAGE_MEDIAFAILD = { code: 6008, msg: "未检测到音频设备！" };
+const SIP_MESSAGE_MEDIA_UNSUPPORT = { code: 6009, msg: "浏览器无法获取音频设备！" };
 
 const INTERFACE_FAIL_SIGNIN = { code: 5001, msg: "签入失败！" };
 const INTERFACE_FAIL_GETNUMBERLIST = { code: 5002, msg: "获取显号列表失败！" };
@@ -73,7 +74,7 @@ export class CCBAR {
 
     constructor(options: CCBAR.AccountOptions) {
         this.accountParams = options;
-        this.accountParams.api = "http://172.16.0.219:8020/tscloud/ccbar/";
+        this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
         this.accountParams.wsUrl = "172.16.0.219";
         const body = document.body;
         const videoTag = document.createElement("video");
@@ -187,6 +188,12 @@ export class CCBAR {
 
     // 接听来电
     public accept() {
+
+        if (window.navigator.mediaDevices === undefined) {
+            this.webRTCSubject.next(SIP_MESSAGE_MEDIA_UNSUPPORT);
+            return;
+        }
+
         if (this.session === undefined) {
             this.webRTCSubject.next(SIP_MESSAGE_NOINVITE);
             return;
