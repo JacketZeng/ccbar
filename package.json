@@ -2,7 +2,7 @@
     "name": "ccbar.js",
     "title": "CCBAR.js",
     "description": "A simple, intuitive, and powerful JavaScript signaling library",
-    "version": "1.0.6-0",
+    "version": "1.0.7-0",
     "license": "MIT",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
