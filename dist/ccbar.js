@@ -1,6 +1,6 @@
 /*!
  * 
- *  CCBAR version 1.0.6-0
+ *  CCBAR version 1.0.8-0
  *  Copyright (c) 2014-2019 JacketZeng
  * 
  * 
@@ -966,7 +966,7 @@ var C;
 /* 5 */
 /***/ (function(module) {
 
-module.exports = {"name":"ccbar.js","title":"CCBAR.js","description":"A simple, intuitive, and powerful JavaScript signaling library","version":"1.0.6-0","license":"MIT","main":"./lib/index.js","types":"./lib/index.d.ts","homepage":"https://github.com/JacketZeng/ccbar#readme","author":"JacketZeng","repository":{"type":"git","url":"https://github.com/JacketZeng/ccbar.git"},"keywords":["ccbar","webrtc","library","websocket","javascript","typescript"],"dependencies":{"@stomp/stompjs":"^5.4.2","crypto-js":"^3.1.9-1","jquery":"^3.4.1","rxjs":"^6.5.2","sockjs-client":"^1.3.0"},"devDependencies":{"@types/jasmine":"^3.3.11","@types/jquery":"^3.3.30","@types/node":"^11.11.6","circular-dependency-plugin":"^5.0.2","jasmine-core":"^3.3.0","karma":"^4.0.1","karma-chrome-launcher":"^2.2.0","karma-cli":"^2.0.0","karma-jasmine":"^2.0.1","karma-jasmine-html-reporter":"^1.4.0","karma-mocha-reporter":"^2.2.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^3.0.5","pegjs":"^0.10.0","ts-loader":"^5.3.3","ts-pegjs":"0.2.2","tslint":"^5.14.0","typescript":"^3.3.4000","webpack":"^4.29.6","webpack-cli":"^3.3.0"},"engines":{"node":">=8.0"},"scripts":{"prebuild":"tslint -p tsconfig-base.json -c tslint.json","generate-grammar":"node build/grammarGenerator.js","build-reg-bundle":"webpack --progress --config build/webpack.config.js --env.buildType reg","build-min-bundle":"webpack --progress --config build/webpack.config.js --env.buildType min","build-bundles":"npm run build-reg-bundle && npm run build-min-bundle","build-lib":"tsc -p src","build-test":"tsc -p test","copy-dist-files":"cp dist/ccbar.min.js dist/ccbar-$npm_package_version.js && cp dist/ccbar.min.js dist/ccbar-$npm_package_version.min.js","build":"npm run generate-grammar && npm run build-lib && npm run build-bundles","browserTest":"npm run build-test && sleep 2 && open http://0.0.0.0:9876/debug.html & karma start --reporters kjhtml --no-single-run","commandLineTest":"npm run build-test && karma start --reporters mocha --browsers ChromeHeadless --single-run","buildAndTest":"npm run build && npm run commandLineTest","buildAndBrowserTest":"npm run build && npm run browserTest"}};
+module.exports = {"name":"ccbar.js","title":"CCBAR.js","description":"A simple, intuitive, and powerful JavaScript signaling library","version":"1.0.8-0","license":"MIT","main":"./lib/index.js","types":"./lib/index.d.ts","homepage":"https://github.com/JacketZeng/ccbar#readme","author":"JacketZeng","repository":{"type":"git","url":"https://github.com/JacketZeng/ccbar.git"},"keywords":["ccbar","webrtc","library","websocket","javascript","typescript"],"dependencies":{"@stomp/stompjs":"^5.4.2","crypto-js":"^3.1.9-1","jquery":"^3.4.1","rxjs":"^6.5.2","sockjs-client":"^1.3.0"},"devDependencies":{"@types/jasmine":"^3.3.11","@types/jquery":"^3.3.30","@types/node":"^11.11.6","circular-dependency-plugin":"^5.0.2","jasmine-core":"^3.3.0","karma":"^4.0.1","karma-chrome-launcher":"^2.2.0","karma-cli":"^2.0.0","karma-jasmine":"^2.0.1","karma-jasmine-html-reporter":"^1.4.0","karma-mocha-reporter":"^2.2.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^3.0.5","pegjs":"^0.10.0","ts-loader":"^5.3.3","ts-pegjs":"0.2.2","tslint":"^5.14.0","typescript":"^3.3.4000","webpack":"^4.29.6","webpack-cli":"^3.3.0"},"engines":{"node":">=8.0"},"scripts":{"prebuild":"tslint -p tsconfig-base.json -c tslint.json","generate-grammar":"node build/grammarGenerator.js","build-reg-bundle":"webpack --progress --config build/webpack.config.js --env.buildType reg","build-min-bundle":"webpack --progress --config build/webpack.config.js --env.buildType min","build-bundles":"npm run build-reg-bundle && npm run build-min-bundle","build-lib":"tsc -p src","build-test":"tsc -p test","copy-dist-files":"cp dist/ccbar.min.js dist/ccbar-$npm_package_version.js && cp dist/ccbar.min.js dist/ccbar-$npm_package_version.min.js","build":"npm run generate-grammar && npm run build-lib && npm run build-bundles","browserTest":"npm run build-test && sleep 2 && open http://0.0.0.0:9876/debug.html & karma start --reporters kjhtml --no-single-run","commandLineTest":"npm run build-test && karma start --reporters mocha --browsers ChromeHeadless --single-run","buildAndTest":"npm run build && npm run commandLineTest","buildAndBrowserTest":"npm run build && npm run browserTest"}};
 
 /***/ }),
 /* 6 */
@@ -27457,6 +27457,7 @@ var SIP_MESSAGE_TRANSPORTCREATED = { code: 6006, msg: "transportCreated" };
 var SIP_MESSAGE_INVITE = { code: 6007, msg: "您有新的来电！" };
 var SIP_MESSAGE_NOINVITE = { code: 6008, msg: "未检测到来电！" };
 var SIP_MESSAGE_MEDIAFAILD = { code: 6008, msg: "未检测到音频设备！" };
+var SIP_MESSAGE_MEDIA_UNSUPPORT = { code: 6009, msg: "浏览器无法获取音频设备！" };
 var INTERFACE_FAIL_SIGNIN = { code: 5001, msg: "签入失败！" };
 var INTERFACE_FAIL_GETNUMBERLIST = { code: 5002, msg: "获取显号列表失败！" };
 var INTERFACE_FAIL_CHANGESTATUS = { code: 5003, msg: "坐席状态切换失败！" };
@@ -27489,14 +27490,15 @@ var CCBAR = /** @class */ (function () {
         // 接口消息主题
         this.interfaceSubject = new rxjs_1.Subject();
         this.getConnectUrl = function (ticket) {
-            return "//" + _this.accountParams.wsUrl + "/tscloud/websocket/ws?ticket=" + ticket;
+            return _this.accountParams.wsUrl + "/tscloud/websocket/ws?ticket=" + ticket;
         };
         this.getUserUrl = function (ticket) {
             return "/topic/pss." + ticket;
         };
         this.accountParams = options;
-        this.accountParams.api = "http://172.16.0.219:8020/tscloud/ccbar/";
-        this.accountParams.wsUrl = "172.16.0.219";
+        // this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
+        // this.accountParams.api = "https://172.16.0.219:442/tscloud/ccbar/";
+        // this.accountParams.wsUrl = "172.16.0.219";
         var body = document.body;
         var videoTag = document.createElement("video");
         videoTag.style.display = "none";
@@ -27604,6 +27606,10 @@ var CCBAR = /** @class */ (function () {
     // 接听来电
     CCBAR.prototype.accept = function () {
         var _this = this;
+        if (window.navigator.mediaDevices === undefined) {
+            this.webRTCSubject.next(SIP_MESSAGE_MEDIA_UNSUPPORT);
+            return;
+        }
         if (this.session === undefined) {
             this.webRTCSubject.next(SIP_MESSAGE_NOINVITE);
             return;

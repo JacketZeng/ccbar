@@ -76,7 +76,7 @@ export class CCBAR {
         this.accountParams = options;
         // this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
         // this.accountParams.api = "https://172.16.0.219:442/tscloud/ccbar/";
-        this.accountParams.wsUrl = "172.16.0.219";
+        // this.accountParams.wsUrl = "172.16.0.219";
         const body = document.body;
         const videoTag = document.createElement("video");
         videoTag.style.display = "none";
@@ -635,7 +635,7 @@ export class CCBAR {
     }
 
     private getConnectUrl = (ticket) => {
-        return "//" + this.accountParams.wsUrl + "/tscloud/websocket/ws?ticket=" + ticket;
+        return this.accountParams.wsUrl + "/tscloud/websocket/ws?ticket=" + ticket;
     }
     private getUserUrl = (ticket) => {
         return "/topic/pss." + ticket;
