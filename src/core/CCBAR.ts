@@ -74,7 +74,8 @@ export class CCBAR {
 
     constructor(options: CCBAR.AccountOptions) {
         this.accountParams = options;
-        this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
+        // this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
+        // this.accountParams.api = "https://172.16.0.219:442/tscloud/ccbar/";
         this.accountParams.wsUrl = "172.16.0.219";
         const body = document.body;
         const videoTag = document.createElement("video");
