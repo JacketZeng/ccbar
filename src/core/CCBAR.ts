@@ -30,8 +30,8 @@ const SIP_MESSAGE_OUTOFDIALOGREFERREQUESTED = { code: 6005, msg: "outOfDialogRef
 const SIP_MESSAGE_TRANSPORTCREATED = { code: 6006, msg: "transportCreated" };
 const SIP_MESSAGE_INVITE = { code: 6007, msg: "您有新的来电！" };
 const SIP_MESSAGE_NOINVITE = { code: 6008, msg: "未检测到来电！" };
-const SIP_MESSAGE_MEDIAFAILD = { code: 6008, msg: "未检测到音频设备！" };
-const SIP_MESSAGE_MEDIA_UNSUPPORT = { code: 6009, msg: "浏览器无法获取音频设备！" };
+const SIP_MESSAGE_MEDIAFAILD = { code: 6009, msg: "未检测到音频设备！" };
+const SIP_MESSAGE_MEDIA_UNSUPPORT = { code: 60010, msg: "浏览器无法获取音频设备！" };
 
 const INTERFACE_FAIL_SIGNIN = { code: 5001, msg: "签入失败！" };
 const INTERFACE_FAIL_GETNUMBERLIST = { code: 5002, msg: "获取显号列表失败！" };
@@ -74,9 +74,8 @@ export class CCBAR {
 
     constructor(options: CCBAR.AccountOptions) {
         this.accountParams = options;
-        // this.accountParams.api = "//172.16.0.219:8020/tscloud/ccbar/";
-        // this.accountParams.api = "https://172.16.0.219:442/tscloud/ccbar/";
-        // this.accountParams.wsUrl = "172.16.0.219";
+        this.accountParams.api = options.api || "https://172.16.0.219:442/tscloud/ccbar/";
+        this.accountParams.wsUrl = options.wsUrl || "https://172.16.0.219:442";
         const body = document.body;
         const videoTag = document.createElement("video");
         videoTag.style.display = "none";
@@ -241,7 +240,12 @@ export class CCBAR {
         $.ajax({
             url: this.getJsonpUrl("signIn"),
             dataType: "jsonp", // 指定服务器返回的数据类型
-            data: this.accountParams,
+            data:{
+                enterprise: this.accountParams.enterprise,
+                account: this.accountParams.account,
+                password: this.accountParams.password,
+                skillGroupId : this.accountParams.skillGroupId
+            },
             jsonp: "callback", // 指定参数名称
             jsonpCallback: "handleData" // 指定回调函数
         }).done((data) => {
