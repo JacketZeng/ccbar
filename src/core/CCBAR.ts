@@ -240,7 +240,7 @@ export class CCBAR {
         $.ajax({
             url: this.getJsonpUrl("signIn"),
             dataType: "jsonp", // 指定服务器返回的数据类型
-            data:{
+            data: {
                 enterprise: this.accountParams.enterprise,
                 account: this.accountParams.account,
                 password: this.accountParams.password,
