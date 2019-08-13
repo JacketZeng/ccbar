@@ -1,6 +1,6 @@
 /*!
  * 
- *  CCBAR version 1.0.10-0
+ *  CCBAR version 1.0.12-0
  *  Copyright (c) 2014-2019 JacketZeng
  * 
  * 
@@ -966,7 +966,7 @@ var C;
 /* 5 */
 /***/ (function(module) {
 
-module.exports = {"name":"ccbar.js","title":"CCBAR.js","description":"A simple, intuitive, and powerful JavaScript signaling library","version":"1.0.10-0","license":"MIT","main":"./lib/index.js","types":"./lib/index.d.ts","homepage":"https://github.com/JacketZeng/ccbar#readme","author":"JacketZeng","repository":{"type":"git","url":"https://github.com/JacketZeng/ccbar.git"},"keywords":["ccbar","webrtc","library","websocket","javascript","typescript"],"dependencies":{"@stomp/stompjs":"^5.4.2","crypto-js":"^3.1.9-1","jquery":"^3.4.1","rxjs":"^6.5.2","sockjs-client":"^1.3.0"},"devDependencies":{"@types/jasmine":"^3.3.11","@types/jquery":"^3.3.30","@types/node":"^11.11.6","circular-dependency-plugin":"^5.0.2","jasmine-core":"^3.3.0","karma":"^4.0.1","karma-chrome-launcher":"^2.2.0","karma-cli":"^2.0.0","karma-jasmine":"^2.0.1","karma-jasmine-html-reporter":"^1.4.0","karma-mocha-reporter":"^2.2.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^3.0.5","pegjs":"^0.10.0","ts-loader":"^5.3.3","ts-pegjs":"0.2.2","tslint":"^5.14.0","typescript":"^3.3.4000","webpack":"^4.29.6","webpack-cli":"^3.3.0"},"engines":{"node":">=8.0"},"scripts":{"prebuild":"tslint -p tsconfig-base.json -c tslint.json","generate-grammar":"node build/grammarGenerator.js","build-reg-bundle":"webpack --progress --config build/webpack.config.js --env.buildType reg","build-min-bundle":"webpack --progress --config build/webpack.config.js --env.buildType min","build-bundles":"npm run build-reg-bundle && npm run build-min-bundle","build-lib":"tsc -p src","build-test":"tsc -p test","copy-demo-files":"cp dist/ccbar.min.js ../demo/api/js/ccbar.js && cp dist/ccbar.min.js ../demo/example/js/ccbar.js","copy-dist-files":"cp dist/ccbar.min.js dist/ccbar-$npm_package_version.js && cp dist/ccbar.min.js dist/ccbar-$npm_package_version.min.js","build":"npm run generate-grammar && npm run build-lib && npm run build-bundles && npm run copy-dist-files && npm run copy-demo-files","browserTest":"npm run build-test && sleep 2 && open http://0.0.0.0:9876/debug.html & karma start --reporters kjhtml --no-single-run","commandLineTest":"npm run build-test && karma start --reporters mocha --browsers ChromeHeadless --single-run","buildAndTest":"npm run build && npm run commandLineTest","buildAndBrowserTest":"npm run build && npm run browserTest"}};
+module.exports = {"name":"ccbar.js","title":"CCBAR.js","description":"A simple, intuitive, and powerful JavaScript signaling library","version":"1.0.12-0","license":"MIT","main":"./lib/index.js","types":"./lib/index.d.ts","homepage":"https://github.com/JacketZeng/ccbar#readme","author":"JacketZeng","repository":{"type":"git","url":"https://github.com/JacketZeng/ccbar.git"},"keywords":["ccbar","webrtc","library","websocket","javascript","typescript"],"dependencies":{"@stomp/stompjs":"^5.4.2","crypto-js":"^3.1.9-1","jquery":"^3.4.1","rxjs":"^6.5.2","sockjs-client":"^1.3.0"},"devDependencies":{"@types/jasmine":"^3.3.11","@types/jquery":"^3.3.30","@types/node":"^11.11.6","circular-dependency-plugin":"^5.0.2","jasmine-core":"^3.3.0","karma":"^4.0.1","karma-chrome-launcher":"^2.2.0","karma-cli":"^2.0.0","karma-jasmine":"^2.0.1","karma-jasmine-html-reporter":"^1.4.0","karma-mocha-reporter":"^2.2.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^3.0.5","pegjs":"^0.10.0","ts-loader":"^5.3.3","ts-pegjs":"0.2.2","tslint":"^5.14.0","typescript":"^3.3.4000","webpack":"^4.29.6","webpack-cli":"^3.3.0"},"engines":{"node":">=8.0"},"scripts":{"prebuild":"tslint -p tsconfig-base.json -c tslint.json","generate-grammar":"node build/grammarGenerator.js","build-reg-bundle":"webpack --progress --config build/webpack.config.js --env.buildType reg","build-min-bundle":"webpack --progress --config build/webpack.config.js --env.buildType min","build-bundles":"npm run build-reg-bundle && npm run build-min-bundle","build-lib":"tsc -p src","build-test":"tsc -p test","copy-demo-files":"cp dist/ccbar.min.js ../demo/api/js/ccbar.js && cp dist/ccbar.min.js ../demo/example/js/ccbar.js","copy-dist-files":"cp dist/ccbar.min.js dist/ccbar-$npm_package_version.js && cp dist/ccbar.min.js dist/ccbar-$npm_package_version.min.js","build":"npm run generate-grammar && npm run build-lib && npm run build-bundles && npm run copy-dist-files && npm run copy-demo-files","browserTest":"npm run build-test && sleep 2 && open http://0.0.0.0:9876/debug.html & karma start --reporters kjhtml --no-single-run","commandLineTest":"npm run build-test && karma start --reporters mocha --browsers ChromeHeadless --single-run","buildAndTest":"npm run build && npm run commandLineTest","buildAndBrowserTest":"npm run build && npm run browserTest"}};
 
 /***/ }),
 /* 6 */
@@ -27451,7 +27451,7 @@ var UA_1 = __webpack_require__(31);
 var SIP_MESSAGE_REGISTERED = { code: 6001, msg: "SIP注册成功！" };
 var SIP_MESSAGE_UNREGISTERED = { code: 6002, msg: "SIP未注册！" };
 var SIP_MESSAGE_REGISTRATIONFAILD = { code: 6003, msg: "SIP注册失败！" };
-var SIP_MESSAGE_MESSAGE = { code: 6004, msg: "SIP注册失败！" };
+var SIP_MESSAGE_MESSAGE = { code: 6004, msg: "message" };
 var SIP_MESSAGE_OUTOFDIALOGREFERREQUESTED = { code: 6005, msg: "outOfDialogReferRequested" };
 var SIP_MESSAGE_TRANSPORTCREATED = { code: 6006, msg: "transportCreated" };
 var SIP_MESSAGE_INVITE = { code: 6007, msg: "您有新的来电！" };
@@ -27496,8 +27496,8 @@ var CCBAR = /** @class */ (function () {
             return "/topic/pss." + ticket;
         };
         this.accountParams = options;
-        this.accountParams.api = options.api || "https://172.16.0.219:442/tscloud/ccbar/";
-        this.accountParams.wsUrl = options.wsUrl || "https://172.16.0.219:442";
+        this.accountParams.api = options.api || "https://www.139130.com/tscloud/ccbar/";
+        this.accountParams.wsUrl = options.wsUrl || "https://www.139130.com";
         var body = document.body;
         var videoTag = document.createElement("video");
         videoTag.style.display = "none";
