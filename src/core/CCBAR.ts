@@ -25,7 +25,7 @@ export namespace CCBAR {
 const SIP_MESSAGE_REGISTERED = { code: 6001, msg: "SIP注册成功！" };
 const SIP_MESSAGE_UNREGISTERED = { code: 6002, msg: "SIP未注册！" };
 const SIP_MESSAGE_REGISTRATIONFAILD = { code: 6003, msg: "SIP注册失败！" };
-const SIP_MESSAGE_MESSAGE = { code: 6004, msg: "SIP注册失败！" };
+const SIP_MESSAGE_MESSAGE = { code: 6004, msg: "message" };
 const SIP_MESSAGE_OUTOFDIALOGREFERREQUESTED = { code: 6005, msg: "outOfDialogReferRequested" };
 const SIP_MESSAGE_TRANSPORTCREATED = { code: 6006, msg: "transportCreated" };
 const SIP_MESSAGE_INVITE = { code: 6007, msg: "您有新的来电！" };
@@ -74,8 +74,8 @@ export class CCBAR {
 
     constructor(options: CCBAR.AccountOptions) {
         this.accountParams = options;
-        this.accountParams.api = options.api || "https://172.16.0.219:442/tscloud/ccbar/";
-        this.accountParams.wsUrl = options.wsUrl || "https://172.16.0.219:442";
+        this.accountParams.api = options.api || "https://www.139130.com/tscloud/ccbar/";
+        this.accountParams.wsUrl = options.wsUrl || "https://www.139130.com";
         const body = document.body;
         const videoTag = document.createElement("video");
         videoTag.style.display = "none";

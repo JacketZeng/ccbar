@@ -43,6 +43,7 @@
 | statusCode | number | 坐席状态值（详情参考statusCode） |
 | sessionId  | string |           通话唯一标识           |
 |    ttl     | number |      后处理倒计时（单位秒）      |
+|   phone    | string |             弹屏电话             |
 | timestamp  | number |              时间戳              |
 
 ### statusCode
@@ -70,13 +71,13 @@
 | 6001  |       SIP注册成功！       |
 | 6002  |        SIP未注册！        |
 | 6003  |       SIP注册失败！       |
-| 6004  |       SIP注册失败！       |
+| 6004  |          message          |
 | 6005  | outOfDialogReferRequested |
 | 6006  |     transportCreated      |
 | 6007  |      您有新的来电！       |
 | 6008  |      未检测到来电！       |
 | 6009  |    未检测到音频设备！     |
-| 60010  |    浏览器无法获取音频设备！     |
+| 60010 | 浏览器无法获取音频设备！  |
 
 
 
